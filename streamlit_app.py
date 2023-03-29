@@ -27,7 +27,7 @@ def get_public_url() -> str:
 
 def get_public_url_alt() -> str:
     headers = _get_websocket_headers()
-    return headers.get("Host")
+    return headers.get("Origin")
 
 
 st.write(get_public_url())
