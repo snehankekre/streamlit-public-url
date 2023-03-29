@@ -1,6 +1,9 @@
 from streamlit.runtime.scriptrunner import get_script_run_ctx
 from streamlit.web.server.browser_websocket_handler import BrowserWebSocketHandler
 
+from streamlit.web.server.websocket_headers import _get_websocket_headers
+
+
 import streamlit as st
 from streamlit import runtime
 
@@ -22,4 +25,10 @@ def get_public_url() -> str:
     return f"{protocol}://{host}"
 
 
+def get_public_url_alt() -> str:
+    headers = _get_websocket_headers()
+    return headers.get("Host")
+
+
 st.write(get_public_url())
+st.write(get_public_url_alt())
